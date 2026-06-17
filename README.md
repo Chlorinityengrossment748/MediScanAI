@@ -166,48 +166,91 @@ cd ../skin_cancer && python3 train.py
 ## 📂 Project Structure
 
 MediScanAI/
+
 │
+
 ├── backend/
+
 │   ├── models/
+
 │   │   ├── brain_tumor/           # EfficientNet model + training
+
 │   │   ├── diabetic_retinopathy/  # ResNet50 model + training
+
 │   │   └── skin_cancer/           # EfficientNet-B2 model + training
+
 │   ├── routes/
+
 │   │   ├── auth.py                # Register & Login
+
 │   │   ├── predict.py             # AI predictions
+
 │   │   ├── doctor.py              # Doctor endpoints
+
 │   │   └── patient.py             # Patient endpoints
+
 │   ├── utils/
+
 │   │   ├── gradcam.py             # Grad-CAM heatmaps
+
 │   │   ├── image_processor.py     # Image preprocessing
+
 │   │   └── report_generator.py    # PDF report generation
+
 │   ├── datasets/                  # Place downloaded datasets here
+
 │   ├── uploads/                   # Uploaded scan images
+
 │   ├── main.py                    # FastAPI app entry point
+
 │   ├── database.py                # PostgreSQL connection
+
 │   └── auth.py                    # JWT authentication
+
 │
+
 ├── frontend/
+
 │   └── src/
+
 │       ├── pages/
+
 │       │   ├── Login.jsx
+
 │       │   ├── Register.jsx
+
 │       │   ├── DoctorDashboard.jsx
+
 │       │   └── PatientDashboard.jsx
+
 │       ├── components/
+
 │       │   ├── Doctor/            # UploadScan, PatientList, Analytics, Reports
+
 │       │   ├── Patient/           # UploadScan, ResultCard, ScanHistory
+
 │       │   └── Common/            # Navbar, Sidebar, Loader, HeatmapViewer
+
 │       └── utils/
+
 │           └── api.js             # Axios API calls
+
 │
+
 ├── notebooks/
+
 │   ├── brain_tumor/               # Jupyter training notebook
+
 │   ├── diabetic_retinopathy/      # Jupyter training notebook
+
 │   └── skin_cancer/               # Jupyter training notebook
+
 │
+
 ├── docker-compose.yml
+
 ├── README.md
+
 └── .gitignore
 
 ---
