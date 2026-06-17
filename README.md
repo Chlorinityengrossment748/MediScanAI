@@ -45,18 +45,16 @@ Built for doctors and patients who need fast, explainable, and accurate AI-assis
 
 ## 🛠️ Tech Stack
 
-┌──────────────────┬───────────────────────────────────────────────────────────┐
-│  Layer           │  Tools                                                    │
-├──────────────────┼───────────────────────────────────────────────────────────┤
-│  Frontend        │  React.js · TailwindCSS · Recharts · Lucide Icons         │
-│  Backend         │  FastAPI · Python 3.13 · SQLAlchemy                       │
-│  Machine Learning│  PyTorch · EfficientNet B0/B2 · ResNet50                  │
-│  Explainability  │  Grad-CAM (pytorch-grad-cam)                              │
-│  Database        │  PostgreSQL                                               │
-│  Authentication  │  JWT · bcrypt · OAuth2                                    │
-│  PDF Reports     │  ReportLab                                                │
-│  Infrastructure  │  Docker · Docker Compose                                  │
-└──────────────────┴───────────────────────────────────────────────────────────┘
+| Layer | Tools |
+|---|---|
+| **Frontend** | React.js · TailwindCSS · Recharts · Lucide Icons |
+| **Backend** | FastAPI · Python 3.13 · SQLAlchemy |
+| **Machine Learning** | PyTorch · EfficientNet B0/B2 · ResNet50 |
+| **Explainability** | Grad-CAM (pytorch-grad-cam) |
+| **Database** | PostgreSQL |
+| **Authentication** | JWT · bcrypt · OAuth2 |
+| **PDF Reports** | ReportLab |
+| **Infrastructure** | Docker · Docker Compose |
 
 ---
 
@@ -165,94 +163,35 @@ cd ../skin_cancer && python3 train.py
 
 ## 📂 Project Structure
 
+```
 MediScanAI/
-
-│
-
 ├── backend/
-
 │   ├── models/
-
-│   │   ├── brain_tumor/           # EfficientNet model + training
-
-│   │   ├── diabetic_retinopathy/  # ResNet50 model + training
-
-│   │   └── skin_cancer/           # EfficientNet-B2 model + training
-
+│   │   ├── brain_tumor/
+│   │   ├── diabetic_retinopathy/
+│   │   └── skin_cancer/
 │   ├── routes/
-
-│   │   ├── auth.py                # Register & Login
-
-│   │   ├── predict.py             # AI predictions
-
-│   │   ├── doctor.py              # Doctor endpoints
-
-│   │   └── patient.py             # Patient endpoints
-
+│   │   ├── auth.py
+│   │   ├── predict.py
+│   │   ├── doctor.py
+│   │   └── patient.py
 │   ├── utils/
-
-│   │   ├── gradcam.py             # Grad-CAM heatmaps
-
-│   │   ├── image_processor.py     # Image preprocessing
-
-│   │   └── report_generator.py    # PDF report generation
-
-│   ├── datasets/                  # Place downloaded datasets here
-
-│   ├── uploads/                   # Uploaded scan images
-
-│   ├── main.py                    # FastAPI app entry point
-
-│   ├── database.py                # PostgreSQL connection
-
-│   └── auth.py                    # JWT authentication
-
-│
-
+│   │   ├── gradcam.py
+│   │   ├── image_processor.py
+│   │   └── report_generator.py
+│   ├── main.py
+│   ├── database.py
+│   └── auth.py
 ├── frontend/
-
 │   └── src/
-
 │       ├── pages/
-
-│       │   ├── Login.jsx
-
-│       │   ├── Register.jsx
-
-│       │   ├── DoctorDashboard.jsx
-
-│       │   └── PatientDashboard.jsx
-
 │       ├── components/
-
-│       │   ├── Doctor/            # UploadScan, PatientList, Analytics, Reports
-
-│       │   ├── Patient/           # UploadScan, ResultCard, ScanHistory
-
-│       │   └── Common/            # Navbar, Sidebar, Loader, HeatmapViewer
-
 │       └── utils/
-
-│           └── api.js             # Axios API calls
-
-│
-
 ├── notebooks/
-
-│   ├── brain_tumor/               # Jupyter training notebook
-
-│   ├── diabetic_retinopathy/      # Jupyter training notebook
-
-│   └── skin_cancer/               # Jupyter training notebook
-
-│
-
 ├── docker-compose.yml
-
 ├── README.md
-
 └── .gitignore
-
+```
 ---
 
 ## 📌 API Documentation
