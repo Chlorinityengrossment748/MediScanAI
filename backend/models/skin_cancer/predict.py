@@ -3,22 +3,23 @@ from torchvision import transforms
 from PIL import Image
 from model import SkinCancerModel
 
-CLASS_NAMES = ["MEL", "NV", "BCC", "AKIEC", "BKL", "DF", "VASC"]
+CLASS_NAMES = ["MEL", "NV", "BCC", "AK", "BKL", "DF", "VASC", "SCC"]
 CLASS_FULL_NAMES = {
     "MEL": "Melanoma",
-    "NV": "Melanocytic Nevi",
+    "NV": "Melanocytic Nevus",
     "BCC": "Basal Cell Carcinoma",
-    "AKIEC": "Actinic Keratosis",
+    "AK": "Actinic Keratosis",
     "BKL": "Benign Keratosis",
     "DF": "Dermatofibroma",
-    "VASC": "Vascular Lesion"
+    "VASC": "Vascular Lesion",
+    "SCC": "Squamous Cell Carcinoma"
 }
 BENIGN_CLASSES = ["NV", "BKL", "DF", "VASC"]
 MODEL_PATH = "skin_cancer_model.pth"
 
 device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
 
-model = SkinCancerModel(num_classes=7)
+model = SkinCancerModel(num_classes=8)
 model.load_state_dict(torch.load(MODEL_PATH, map_location=device))
 model.to(device)
 model.eval()

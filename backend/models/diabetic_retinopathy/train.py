@@ -1,8 +1,9 @@
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
+
 import torch
 import torch.nn as nn
-from torch.utils.data import DataLoader, random_split, Dataset
+from torch.utils.data import DataLoader, Dataset
 from torchvision import transforms
 from PIL import Image
 from model import DiabeticRetinopathyModel
@@ -10,15 +11,15 @@ import pandas as pd
 import os
 
 # Config
-DATASET_PATH = "../../datasets/brain_tumor/Training"  # Point directly to Training folder
-TEST_PATH = "../../datasets/brain_tumor/Testing"
-BATCH_SIZE = 32
-EPOCHS = 15
-LR = 0.0003
-NUM_CLASSES = 4
-SAVE_PATH = "brain_tumor_model.pth"
+CSV_PATH = "../../datasets/diabetic_retinopathy/aptos2019-blindness-detection/train.csv"
+IMG_DIR = "../../datasets/diabetic_retinopathy/aptos2019-blindness-detection/train_images"
+BATCH_SIZE = 16
+EPOCHS = 20
+LR = 0.0001
+NUM_CLASSES = 5
+SAVE_PATH = "diabetic_retinopathy_model.pth"
 
-# Custom Dataset for APTOS (CSV based)
+# Custom Dataset for APTOS
 class APTOSDataset(Dataset):
     def __init__(self, csv_file, img_dir, transform=None):
         self.data = pd.read_csv(csv_file)
@@ -42,7 +43,7 @@ train_transform = transforms.Compose([
     transforms.RandomHorizontalFlip(),
     transforms.RandomVerticalFlip(),
     transforms.RandomRotation(20),
-    transforms.ColorJitter(brightness=0.3, contrast=0.3, saturation=0.3),
+    transforms.ColorJitter(brightness=0.3, contrast=0.3, saturation=0.2),
     transforms.ToTensor(),
     transforms.Normalize([0.485, 0.456, 0.406],
                          [0.229, 0.224, 0.225])
@@ -55,34 +56,52 @@ val_transform = transforms.Compose([
                          [0.229, 0.224, 0.225])
 ])
 
-# Load dataset
-csv_path = os.path.join(DATASET_PATH, "train.csv")
-img_dir = os.path.join(DATASET_PATH, "train_images")
-
+# Load full dataset
 full_dataset = APTOSDataset(CSV_PATH, IMG_DIR, transform=train_transform)
 print(f"Total images: {len(full_dataset)}")
 
-# Split
+# Split 80/20
 val_size = int(0.2 * len(full_dataset))
 train_size = len(full_dataset) - val_size
-train_data, val_data = random_split(full_dataset, [train_size, val_size])
+train_data, val_data = torch.utils.data.random_split(full_dataset, [train_size, val_size])
 
-train_loader = DataLoader(train_data, batch_size=BATCH_SIZE, shuffle=True, num_workers=2)
-val_loader = DataLoader(val_data, batch_size=BATCH_SIZE, shuffle=False, num_workers=2)
+# Apply val_transform to validation set
+val_data.dataset.transform = val_transform
+
+train_loader = DataLoader(train_data, batch_size=BATCH_SIZE, shuffle=True, num_workers=0)
+val_loader = DataLoader(val_data, batch_size=BATCH_SIZE, shuffle=False, num_workers=0)
 
 # Device
 device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
 print(f"Using device: {device}")
 
-# Model
+# Model — freeze base layers first
 model = DiabeticRetinopathyModel(num_classes=NUM_CLASSES).to(device)
-criterion = nn.CrossEntropyLoss()
-optimizer = torch.optim.Adam(model.parameters(), lr=LR, weight_decay=1e-4)
+
+for param in model.base_model.parameters():
+    param.requires_grad = False
+for param in model.base_model.fc.parameters():
+    param.requires_grad = True
+
+criterion = nn.CrossEntropyLoss(label_smoothing=0.1)
+optimizer = torch.optim.Adam(
+    filter(lambda p: p.requires_grad, model.parameters()),
+    lr=LR, weight_decay=1e-4
+)
 scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=EPOCHS)
 
 best_val_acc = 0.0
 
 for epoch in range(EPOCHS):
+    # Unfreeze all layers after epoch 5
+    if epoch == 5:
+        print("  🔓 Unfreezing all layers for fine-tuning...")
+        for param in model.base_model.parameters():
+            param.requires_grad = True
+        optimizer = torch.optim.Adam(
+            model.parameters(), lr=LR/10, weight_decay=1e-4
+        )
+
     # Train
     model.train()
     train_loss, train_correct = 0, 0
